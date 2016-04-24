@@ -21,8 +21,4 @@ RUN cd /root \
   && chown vscode:vscode /home/vscode/install-vscode-extension*.sh \
   && su vscode -c /home/vscode/install-vscode-extensions.sh
 
-# TODO figure out how to launch it
-# CMD su vscode -c code /home/vscode
-# CMD ./start-vscode.sh
-WORKDIR /root
-CMD /bin/bash
+CMD su vscode -c "code -w /home/vscode"
