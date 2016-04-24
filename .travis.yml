@@ -1,0 +1,31 @@
+# https://github.com/ctaggart/golang-vscode
+# https://travis-ci.org/ctaggart/golang-vscode
+
+# Ubuntu Trusty 14.04 with Docker
+# https://docs.travis-ci.com/user/ci-environment/
+# https://docs.travis-ci.com/user/docker/
+sudo: required
+dist: trusty
+services:
+  - docker
+language: rust
+
+env:
+  global:
+    - VERSION=0.0.1
+
+    # travis encrypt DOCKER_HUB_EMAIL=a DOCKER_HUB_USERNAME=b DOCKER_HUB_PASSWORD=c
+    # - secure: "SBc8QcrGuSECRuwEoikP4dPM8Z2Gaddi7oANm2mbh/JmpdJuD8wn5ToFQc3ih4WI2IZRe7lnU7yxv2R/ZPVXlhIu+MZIcR0Bv9UJrHpGVJbeTTRMo13lBzSbIP93tcTc6IxRJin9s5mM2Hv8AJIsmX0Wx8I9zwRKwyrzNZffOz9ACsITxYW+OjM/vpURVMPdG75RkcWrhDuQOLqWneARLUiMqcFfg9ezxT2whfCI6ZRG81e/bLGutw2sqC9XTeVcszHq6l7rftUIEfjC/eheJwy6B0RNr3qH1srlUqxlMeoRcrPeUuAA01Oex4pXOHhToBngOQUHT+ydiDBwpqNuZrycqNOCLEQ0wng4JXQ0dtHqk8KXXn9ecf388u8Mf+k7DuyrW1K5QCnG9gpfTLcHYzuEkqy3cRQxHYMhMSAaMjHklMXmaNqAYESTet0y33vwLfPJxYntWAb784OABYpa6VTuJ4tmp0XrTkeFPHTBuo8byHoRDghepOeN/fsU5quSjM9sE/A3VJ9Rr2mU3Qk4znBHePsgzKqu8xQjyVGi9vMHCpnH0jcvb8bpEumPgGLBiKZNzLTgPUlKhS8eCJx3dnSQnS9kO+j8F0AVPebxl/CWvaB9rZ73FVSnjTLe/ryonCI9d/SnN9p7crp4vvpms7llIGOg9Hpibr+CzXdxg3k="
+
+install: true
+
+script:
+  - docker build -t ctaggart/golang-vscode:$VERSION .
+
+after_success:
+  - if [ ! -z "$TRAVIS_TAG" ]; then
+      docker login --email=$DOCKER_HUB_EMAIL --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD;
+      docker push ctaggart/golang-vscode:$VERSION;
+      docker tag -f ctaggart/golang-vscode:$VERSION ctaggart/golang-vscode:latest;
+      docker push ctaggart/golang-vscode:latest;
+    fi
