@@ -1,0 +1,19 @@
+syntax_version: "4"
+project_name: golang-vscode
+
+# Make command `docker run --rm -it -w /root -e DISPLAY=$ip:0 ctaggart/golang-vscode`
+# work with Nut:
+based_on:
+  docker_image: ctaggart/golang-vscode
+enable_gui: true
+# container_working_directory: /root
+# Command does not mount any folder. But here is how you would do it:
+# mount:
+#   main:
+#   - .
+#   - /root
+macros:
+  run:
+    usage: run golang-vscode image
+    actions:
+    - su vscode -c "code -w /home/vscode" # code returns immediately. Add -w flag to make it block until the window closes.
