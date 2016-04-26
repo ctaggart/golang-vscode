@@ -11,4 +11,4 @@ macros:
   code:
     usage: start vscode to edit this project
     actions:
-    - su vscode -c "code -w /home/vscode/golang-vscode"
+    - su - vscode -c "code -w /home/vscode/golang-vscode"
