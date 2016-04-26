@@ -17,8 +17,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN cd /root \
   && ./install-apt-packages.sh \
   && useradd -m vscode -s /bin/bash \
-  && cp install-vscode-extension*.sh /home/vscode/ \
+  && cp install-vscode-*.sh /home/vscode/ \
   && chown vscode:vscode /home/vscode/install-vscode-extension*.sh \
-  && su vscode -c /home/vscode/install-vscode-extensions.sh
+  && su - vscode -c /home/vscode/install-vscode-Go.sh
 
-CMD su vscode -c "code -w /home/vscode"
+CMD su - vscode -c "code -w /home/vscode"
