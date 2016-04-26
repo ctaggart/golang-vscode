@@ -5,7 +5,7 @@ $dir/install-vscode-extension.sh lukehoban Go 0.6.38
 
 echo "export PATH=/usr/local/go/bin:$PATH" >> $HOME/.bash_profile
 echo "export GOPATH=$HOME/go" >> $HOME/.bash_profile
-source $HOME/.bash_profile
+. $HOME/.bash_profile
 
 # https://github.com/Microsoft/vscode-go#tools
 go get -u -v github.com/nsf/gocode
