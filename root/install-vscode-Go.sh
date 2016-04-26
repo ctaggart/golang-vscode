@@ -3,8 +3,8 @@ dir=$(cd `dirname "$0"` && pwd)
 # publisher extension version
 $dir/install-vscode-extension.sh lukehoban Go 0.6.38
 
-echo "export GOPATH=$HOME/go" >> ~/.bash_profile
-echo "export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH" >> ~/.bash_profile
+echo 'export GOPATH=$HOME/go' >> ~/.bash_profile
+echo 'export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH' >> ~/.bash_profile
 . ~/.bash_profile
 
 # https://github.com/Microsoft/vscode-go#tools

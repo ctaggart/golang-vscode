@@ -9,21 +9,48 @@ mount:
   - /home/vscode/golang-vscode
 macros:
   code:
-    usage: start vscode to edit this project
+    usage: open this project in vscode
     actions:
     - su - vscode -c "code -w /home/vscode/golang-vscode"
   bash:
     usage: start bash
     actions:
     - su - vscode
-  test:
-    usage: test by opening up the nut project
+    
+  # macros to open vscode for the dependencies
+  gocode:
+    usage: open gocode in vscode
     actions:
-    # - 
-    - |
-      cmd="
-        echo 'export GOPATH=/home/vscode/golang-vscode/test/nut/vendor:\$GOPATH' >> ~/.bash_profile;
-        code -w /home/vscode/golang-vscode/test/nut
-        "
-      echo "cmd is $cmd"
-      su - vscode -c "$cmd"
+    - su - vscode -c "code -w /home/vscode/go/src/github.com/nsf/gocode"
+  godef:
+    usage: open godef in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/github.com/rogpeppe/godef"
+  golint:
+    usage: open golint in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/github.com/golang/lint/golint"
+  go-outline:
+    usage: open go-outline in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/github.com/lukehoban/go-outline"
+  goreturns:
+    usage: open goreturns in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/sourcegraph.com/sqs/goreturns"
+  gorename:
+    usage: open gorename in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/golang.org/x/tools/cmd/gorename"
+  gopkgs:
+    usage: open gopkgs in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/github.com/tpng/gopkgs"
+  go-symbols:
+    usage: open go-symbols in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/github.com/newhook/go-symbols"
+  guru:
+    usage: open guru in vscode
+    actions:
+    - su - vscode -c "code -w /home/vscode/go/src/golang.org/x/tools/cmd/guru"
