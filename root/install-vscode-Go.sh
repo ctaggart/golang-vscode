@@ -18,5 +18,5 @@ go get -u -v github.com/tpng/gopkgs
 go get -u -v github.com/newhook/go-symbols
 go get -u -v golang.org/x/tools/cmd/guru
 
-# https://github.com/derekparker/delve/wiki/Building#linux
-go get -v -u github.com/peterh/liner github.com/derekparker/delve/cmd/dlv
+# https://github.com/derekparker/delve/blob/master/Documentation/installation/linux/install.md
+go get github.com/derekparker/delve/cmd/dlv
