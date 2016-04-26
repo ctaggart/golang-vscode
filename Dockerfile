@@ -19,6 +19,6 @@ RUN cd /root \
   && useradd -m vscode -s /bin/bash \
   && cp install-vscode-*.sh /home/vscode/ \
   && chown vscode:vscode /home/vscode/install-vscode-extension*.sh \
-  && su vscode -c /home/vscode/install-vscode-Go.sh
+  && su - vscode -c /home/vscode/install-vscode-Go.sh
 
 CMD su - vscode -c "code -w /home/vscode"
