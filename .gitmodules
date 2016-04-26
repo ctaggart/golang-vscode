@@ -1,3 +1,0 @@
-[submodule "test/nut"]
-	path = test/nut
-	url = https://github.com/matthieudelaro/nut.git
