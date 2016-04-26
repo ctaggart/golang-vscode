@@ -16,3 +16,14 @@ macros:
     usage: start bash
     actions:
     - su - vscode
+  test:
+    usage: test by opening up the nut project
+    actions:
+    # - 
+    - |
+      cmd="
+        echo 'export GOPATH=/home/vscode/golang-vscode/test/nut/vendor:\$GOPATH' >> ~/.bash_profile;
+        code -w /home/vscode/golang-vscode/test/nut
+        "
+      echo "cmd is $cmd"
+      su - vscode -c "$cmd"
