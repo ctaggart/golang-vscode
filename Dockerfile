@@ -22,4 +22,4 @@ RUN cd /root \
   && su - vscode -c /home/vscode/install-vscode-Go.sh
 
 WORKDIR /root
-CMD ./vscode.sh
+CMD su - vscode -c "code -w ."
