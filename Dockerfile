@@ -21,4 +21,5 @@ RUN cd /root \
   && chown vscode:vscode /home/vscode/install-vscode-extension*.sh \
   && su - vscode -c /home/vscode/install-vscode-Go.sh
 
-CMD su - vscode -c "code -w /home/vscode"
+WORKDIR /root
+CMD ./vscode.sh
