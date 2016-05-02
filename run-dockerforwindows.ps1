@@ -1,6 +1,6 @@
 # start VcXsrv if it is not started yet
 $prog="$env:ProgramFiles\VcXsrv\vcxsrv.exe"
-if (! (ps | ? {$_.path -eq $prog})) {& $prog -ac -multiwindow}
+if (! (ps | ? {$_.path -eq $prog})) {& $prog -multiwindow -ac}
 
 # get the IP address used by Docker for Windows
 $ip = Get-NetIPAddress `
@@ -9,4 +9,7 @@ $ip = Get-NetIPAddress `
 
 # start Visual Studo Code as the vscode user
 $cmd="export DISPLAY=${ip}:0; code -w ."
-docker run --rm ctaggart/golang-vscode su - vscode -c $cmd
+docker run --rm `
+    --security-opt seccomp=unconfined `
+    ctaggart/golang-vscode `
+    su - vscode -c $cmd
